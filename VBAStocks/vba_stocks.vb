@@ -1,21 +1,15 @@
 Sub Vba_Stocks():
 
-'INSTRUCTIONS
-'Create a script that will loop through all the stocks for one year and output the following information.
-    'The ticker symbol.
-    'Yearly change from opening price at the beginning of a given year to the closing price at the end of that year.
-    'The percent change from opening price at the beginning of a given year to the closing price at the end of that year.
-    'The total stock volume of the stock.
 
 For Each ws In Worksheets
   
-    'headers in summary table
+    'headers in stocks table
     ws.Cells(1, 9).Value = "Ticker Symbol"
     ws.Cells(1, 10).Value = "Yearly Change"
     ws.Cells(1, 11).Value = "Percent Change"
     ws.Cells(1, 12).Value = "Total Stock Volume"
         
-    'variables for summary table
+    'variables for stock table
     Dim ticker_symbol As String
     Dim yearly_change As Double
     Dim percent_change As Double
@@ -30,7 +24,7 @@ For Each ws In Worksheets
     Dim open_price As Double
     Dim close_price As Double
           
-    'tickers in the same category to keep track of row number
+    'tickers to keep track of row number
     Dim ticker_number As Double
     ticker_number = 0
             
@@ -63,7 +57,7 @@ For Each ws In Worksheets
                                    
                            
                            
-            'calculate percent change and print row results
+            'percent change and print row results
             If (yearly_change = 0) Or (open_price = 0) Then
                 ws.Range("K" & row_results).Value = 0
                         
@@ -94,6 +88,8 @@ For Each ws In Worksheets
         End If
             
     Next i
-           
+    Next ws
+
+End sub 
         
 
